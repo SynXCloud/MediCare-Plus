@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Appointment | MediCare Plus</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background: var(--off-white); }
+    .apt-container {
+      max-width: 1000px; margin: 60px auto 100px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; padding: 0 24px;
+    }
+    
+    /* Form Styles */
+    .apt-card {
+      background: white; border-radius: var(--radius-lg);
+      padding: 40px; box-shadow: var(--shadow-lg);
+      border: 1px solid var(--gray-200);
+    }
+    .apt-card h2 { font-family: var(--font-display); font-size: 32px; color: var(--navy); margin-bottom: 8px; }
+    .apt-card p { color: var(--text-muted); margin-bottom: 32px; font-size: 15px; }
+    
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+    .form-control {
+      width: 100%; padding: 14px 16px;
+      border: 1px solid var(--gray-200); border-radius: var(--radius-sm);
+      font-family: inherit; font-size: 15px; transition: var(--transition);
+      background: var(--off-white);
+    }
+    .form-control:focus {
+      outline: none; border-color: var(--teal);
+      background: white; box-shadow: 0 0 0 4px var(--teal-pale);
+    }
+    
+    .btn-submit {
+      width: 100%; background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      color: white; padding: 16px; border: none; border-radius: var(--radius-sm);
+      font-size: 16px; font-weight: 700; cursor: pointer; transition: var(--transition);
+      margin-top: 10px;
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,140,124,0.3); }
+
+    /* Success State */
+    .success-state { display: none; text-align: center; padding: 40px 20px; animation: fadeInUp 0.5s ease; }
+    .success-icon {
+      width: 80px; height: 80px; background: #2ecc71; color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 40px; margin: 0 auto 24px;
+    }
+
+    /* Demo Panel */
+    .demo-panel {
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border-radius: var(--radius-lg); padding: 40px;
+      color: white; position: relative; overflow: hidden;
+    }
+    .demo-panel h3 { font-family: var(--font-display); font-size: 28px; margin-bottom: 16px; }
+    .demo-panel p { color: rgba(255,255,255,0.8); margin-bottom: 30px; line-height: 1.6; }
+    
+    /* Prescription UI Mockup */
+    .rx-mock {
+      background: white; border-radius: var(--radius-md); padding: 20px;
+      color: var(--text); box-shadow: var(--shadow-md);
+      transform: rotate(-2deg); transition: var(--transition);
+    }
+    .rx-mock:hover { transform: rotate(0) translateY(-5px); }
+    .rx-header { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--gray-200); padding-bottom: 10px; margin-bottom: 16px; }
+    .rx-logo { font-weight: 700; color: var(--navy); }
+    .rx-date { font-size: 12px; color: var(--text-muted); }
+    .rx-body { font-family: var(--font-mono); font-size: 13px; color: var(--gray-800); }
+    .rx-body div { margin-bottom: 8px; }
+    .rx-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--teal-pale); color: var(--teal);
+      padding: 8px 16px; border-radius: var(--radius-full);
+      font-size: 13px; font-weight: 600; margin-top: 16px;
+      text-decoration: none; cursor: pointer; border: none;
+    }
+
+    @media (max-width: 900px) {
+      .apt-container { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-mark">M+</div>
+        <div class="logo-text">
+          <span class="logo-name">MediCare Plus</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="doctors.html">Doctors</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="apt-container">
+    <!-- Form Side -->
+    <div class="apt-card reveal">
+      <div id="aptFormWrap">
+        <h2>Quick Appointment</h2>
+        <p>No login required. Fill out the details below and get an instant confirmation via SMS.</p>
+        
+        <form id="appointmentForm" onsubmit="handleBooking(event)">
+          <div class="form-group">
+            <label class="form-label">Patient Name</label>
+            <input type="text" class="form-control" required placeholder="Enter full name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" required placeholder="10-digit mobile number" pattern="[0-9]{10}" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Department / Specialist</label>
+            <select class="form-control" required>
+              <option value="" disabled selected>Select department</option>
+              <option value="cardiology">Cardiology (Dr. Priya Sharma)</option>
+              <option value="neurology">Neurology (Dr. Rajesh Kumar)</option>
+              <option value="pediatrics">Pediatrics (Dr. Anjali Mehta)</option>
+              <option value="orthopedics">Orthopedics (Dr. Sandeep Singh)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Preferred Date</label>
+            <input type="date" class="form-control" required id="aptDate" />
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">Confirm Booking</button>
+        </form>
+      </div>
+
+      <!-- Success State -->
+      <div class="success-state" id="successState">
+        <div class="success-icon pulse-effect">✓</div>
+        <h2 style="font-family: var(--font-display); color: var(--navy); margin-bottom: 10px;">Booking Confirmed!</h2>
+        <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 24px;">
+          Your appointment has been successfully scheduled. We have sent a confirmation SMS to your phone number.
+        </p>
+        <button onclick="window.location.reload()" class="btn-outline-dark">Book Another</button>
+      </div>
+    </div>
+
+    <!-- Demo Side -->
+    <div class="demo-panel reveal stagger-1">
+      <h3>Experience Digital Healthcare</h3>
+      <p>At MediCare Plus, we believe in paperless, convenient healthcare. Once your consultation is complete, your prescription is instantly available on your phone.</p>
+      
+      <div class="rx-mock">
+        <div class="rx-header">
+          <span class="rx-logo">M+ e-Prescription</span>
+          <span class="rx-date" id="demoDate">Today</span>
+        </div>
+        <div class="rx-body">
+          <div><strong>Rx</strong></div>
+          <div>1. Amoxicillin 500mg (1-0-1) x 5 days</div>
+          <div>2. Paracetamol 650mg (SOS)</div>
+          <div style="margin-top: 16px; font-size: 11px; color: var(--gray-400);">Digitally signed by Dr. Priya Sharma</div>
+        </div>
+        <button class="rx-btn" onclick="downloadDemo()">⬇ Download PDF</button>
+      </div>
+
+      <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <h4 style="font-size: 16px; margin-bottom: 12px;">Need Help?</h4>
+        <p style="font-size: 14px; margin: 0; color: rgba(255,255,255,0.6);">Call our 24/7 helpline at <strong style="color: white;">1800-000-999</strong> for booking assistance.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Set min date to today
+    document.getElementById('aptDate').min = new Date().toISOString().split("T")[0];
+    
+    // Set demo date
+    document.getElementById('demoDate').innerText = new Date().toLocaleDateString();
+
+    function handleBooking(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.innerHTML = 'Processing...';
+      btn.style.opacity = '0.8';
+
+      // Simulate API call
+      setTimeout(() => {
+        document.getElementById('aptFormWrap').style.display = 'none';
+        document.getElementById('successState').style.display = 'block';
+      }, 1200);
+    }
+
+    function downloadDemo() {
+      alert("This is a demo. In the real app, this would download a secure PDF of your prescription.");
+    }
+
+    // Auto-select department from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const dept = urlParams.get('dept');
+    if (dept) {
+      const select = document.querySelector('select');
+      for(let i=0; i<select.options.length; i++) {
+        if(select.options[i].value === dept) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+    }
+  </script>
+
+  <script src="../js/animations.js"></script>
+</body>
+</html>

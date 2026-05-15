@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Meet the expert doctors and specialists at MediCare Plus Hospital." />
+  <title>Our Doctors | MediCare Plus</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    .page-header {
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      color: white; padding: 100px 24px 60px; text-align: center;
+    }
+    .page-header h1 { font-family: var(--font-display); font-size: 48px; margin-bottom: 16px; }
+    .page-header p { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+    
+    .filter-bar {
+      background: white; padding: 20px; border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md); max-width: 800px; margin: -40px auto 60px;
+      display: flex; gap: 16px; position: relative; z-index: 10;
+      flex-wrap: wrap;
+    }
+    .filter-input {
+      flex: 1; min-width: 200px;
+      padding: 12px 16px; border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm); font-size: 15px;
+      font-family: inherit;
+    }
+    .filter-select {
+      flex: 1; min-width: 200px;
+      padding: 12px 16px; border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm); font-size: 15px;
+      font-family: inherit; color: var(--navy);
+    }
+    
+    .doctors-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px; margin-bottom: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-mark">M+</div>
+        <div class="logo-text">
+          <span class="logo-name">MediCare Plus</span>
+          <span class="logo-tagline">Advanced Healthcare</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./doctors.html" class="active">Doctors</a></li>
+        <li><a href="./services.html">Services</a></li>
+        <li><a href="./appointment.html">Appointment</a></li>
+        <li><a href="./blog.html">Health Blog</a></li>
+        <li><a href="./index.html#contact">Contact</a></li>
+      </ul>
+      <a href="./appointment.html" class="nav-cta">Book Appointment</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="page-header">
+    <h1>Our Medical Experts</h1>
+    <p>Find the right specialist for your healthcare needs from our team of highly experienced professionals.</p>
+  </header>
+
+  <div class="container">
+    <!-- Filter Bar -->
+    <div class="filter-bar reveal">
+      <input type="text" class="filter-input" id="searchDoc" placeholder="Search by doctor name..." onkeyup="filterDoctors()" />
+      <select class="filter-select" id="filterDept" onchange="filterDoctors()">
+        <option value="all">All Departments</option>
+        <option value="cardiology">Cardiology</option>
+        <option value="neurology">Neurology</option>
+        <option value="orthopedics">Orthopedics</option>
+        <option value="pediatrics">Pediatrics</option>
+        <option value="gynecology">Gynecology</option>
+      </select>
+    </div>
+
+    <!-- Doctors Grid -->
+    <div class="doctors-grid" id="doctorsGrid">
+      
+      <!-- Doctor 1 -->
+      <div class="doctor-card reveal" data-name="Priya Sharma" data-dept="cardiology">
+        <div class="doc-photo doc-photo-1"><div class="doc-initials">PS</div></div>
+        <div class="doc-info">
+          <h3>Dr. Priya Sharma</h3>
+          <span class="doc-spec">Senior Cardiologist</span>
+          <div class="doc-meta">
+            <span>🎓 MBBS, MD, DM</span>
+            <span>⭐ 4.9 (312 reviews)</span>
+            <span>🗓️ 18 Years Exp.</span>
+          </div>
+          <div class="doc-avail">
+            <span class="avail-today">✅ Available Today</span>
+          </div>
+          <a href="./appointment.html?doc=priya-sharma" class="btn-book">Book Appointment</a>
+        </div>
+      </div>
+
+      <!-- Doctor 2 -->
+      <div class="doctor-card reveal" data-name="Rajesh Kumar" data-dept="neurology">
+        <div class="doc-photo doc-photo-2"><div class="doc-initials">RK</div></div>
+        <div class="doc-info">
+          <h3>Dr. Rajesh Kumar</h3>
+          <span class="doc-spec">Neurosurgeon</span>
+          <div class="doc-meta">
+            <span>🎓 MBBS, MS, MCh</span>
+            <span>⭐ 4.8 (289 reviews)</span>
+            <span>🗓️ 22 Years Exp.</span>
+          </div>
+          <div class="doc-avail">
+            <span class="avail-tomorrow">📅 Tomorrow</span>
+          </div>
+          <a href="./appointment.html?doc=rajesh-kumar" class="btn-book">Book Appointment</a>
+        </div>
+      </div>
+
+      <!-- Doctor 3 -->
+      <div class="doctor-card reveal" data-name="Anjali Mehta" data-dept="pediatrics">
+        <div class="doc-photo doc-photo-3"><div class="doc-initials">AM</div></div>
+        <div class="doc-info">
+          <h3>Dr. Anjali Mehta</h3>
+          <span class="doc-spec">Pediatric Specialist</span>
+          <div class="doc-meta">
+            <span>🎓 MBBS, MD (Paed)</span>
+            <span>⭐ 4.9 (401 reviews)</span>
+            <span>🗓️ 15 Years Exp.</span>
+          </div>
+          <div class="doc-avail">
+            <span class="avail-today">✅ Available Today</span>
+          </div>
+          <a href="./appointment.html?doc=anjali-mehta" class="btn-book">Book Appointment</a>
+        </div>
+      </div>
+
+      <!-- Doctor 4 -->
+      <div class="doctor-card reveal" data-name="Sandeep Singh" data-dept="orthopedics">
+        <div class="doc-photo" style="background: linear-gradient(135deg, #f59e0b, #d97706);"><div class="doc-initials">SS</div></div>
+        <div class="doc-info">
+          <h3>Dr. Sandeep Singh</h3>
+          <span class="doc-spec">Orthopedic Surgeon</span>
+          <div class="doc-meta">
+            <span>🎓 MBBS, MS (Ortho)</span>
+            <span>⭐ 4.7 (215 reviews)</span>
+            <span>🗓️ 12 Years Exp.</span>
+          </div>
+          <div class="doc-avail">
+            <span class="avail-today">✅ Available Today</span>
+          </div>
+          <a href="./appointment.html?doc=sandeep-singh" class="btn-book">Book Appointment</a>
+        </div>
+      </div>
+      
+      <!-- Doctor 5 -->
+      <div class="doctor-card reveal" data-name="Kavita Verma" data-dept="gynecology">
+        <div class="doc-photo" style="background: linear-gradient(135deg, #ec4899, #db2777);"><div class="doc-initials">KV</div></div>
+        <div class="doc-info">
+          <h3>Dr. Kavita Verma</h3>
+          <span class="doc-spec">Senior Gynecologist</span>
+          <div class="doc-meta">
+            <span>🎓 MBBS, MS (OBG)</span>
+            <span>⭐ 4.9 (350 reviews)</span>
+            <span>🗓️ 20 Years Exp.</span>
+          </div>
+          <div class="doc-avail">
+            <span class="avail-tomorrow">📅 Tomorrow</span>
+          </div>
+          <a href="appointment.html?doc=kavita-verma" class="btn-book">Book Appointment</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function filterDoctors() {
+      const search = document.getElementById('searchDoc').value.toLowerCase();
+      const dept = document.getElementById('filterDept').value;
+      const cards = document.querySelectorAll('.doctor-card');
+      
+      cards.forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        const dDept = card.getAttribute('data-dept');
+        
+        const matchSearch = name.includes(search);
+        const matchDept = dept === 'all' || dDept === dept;
+        
+        if (matchSearch && matchDept) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>

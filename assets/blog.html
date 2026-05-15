@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Read the latest health tips, medical news, and wellness advice from the experts at MediCare Plus." />
+  <title>Health Blog | MediCare Plus</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    .page-header {
+      background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+      color: white; padding: 100px 24px 60px; text-align: center;
+    }
+    .page-header h1 { font-family: var(--font-display); font-size: 48px; margin-bottom: 16px; }
+    .page-header p { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+    
+    .blog-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 32px; padding: 80px 0;
+    }
+    
+    .blog-card {
+      background: white; border-radius: var(--radius-lg);
+      overflow: hidden; border: 1px solid var(--gray-200);
+      transition: var(--transition);
+    }
+    .blog-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+    
+    .blog-img {
+      height: 220px; background: var(--gray-200);
+      position: relative;
+    }
+    .blog-category {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--teal); color: white;
+      padding: 4px 12px; border-radius: var(--radius-full);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    
+    .blog-content { padding: 24px; }
+    .blog-meta { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+    .blog-title { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 12px; line-height: 1.4; }
+    .blog-excerpt { font-size: 15px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+    .blog-link { font-weight: 600; color: var(--teal); font-size: 14px; transition: var(--transition); }
+    .blog-link:hover { letter-spacing: 0.5px; }
+
+    /* Gradients for image placeholders */
+    .bg-1 { background: linear-gradient(135deg, #fceabb, #f8b500); }
+    .bg-2 { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+    .bg-3 { background: linear-gradient(135deg, #84fab0, #8fd3f4); }
+    .bg-4 { background: linear-gradient(135deg, #fccb90, #d57eeb); }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-mark">M+</div>
+        <div class="logo-text">
+          <span class="logo-name">MediCare Plus</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="./doctors.html">Doctors</a></li>
+        <li><a href="./services.html">Services</a></li>
+        <li><a href="./appointment.html">Appointment</a></li>
+        <li><a href="./blog.html" class="active">Health Blog</a></li>
+      </ul>
+      <a href="./appointment.html" class="nav-cta">Book Appointment</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="page-header">
+    <h1>Health & Wellness Blog</h1>
+    <p>Expert insights, medical tips, and healthy living advice from the specialists at MediCare Plus.</p>
+  </header>
+
+  <div class="container">
+    <div class="blog-grid">
+      
+      <!-- Post 1 -->
+      <article class="blog-card reveal">
+        <div class="blog-img bg-1">
+          <span class="blog-category">Heart Health</span>
+        </div>
+        <div class="blog-content">
+          <div class="blog-meta">📅 Oct 12, 2025 • 5 min read</div>
+          <h2 class="blog-title">5 Subtle Signs of Heart Disease You Shouldn't Ignore</h2>
+          <p class="blog-excerpt">Not all heart problems come with clear warning signs like severe chest pain. Learn about the subtle symptoms that could indicate underlying issues.</p>
+          <a href="#" class="blog-link">Read Article →</a>
+        </div>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="blog-card reveal stagger-1">
+        <div class="blog-img bg-2">
+          <span class="blog-category">Pediatrics</span>
+        </div>
+        <div class="blog-content">
+          <div class="blog-meta">📅 Oct 08, 2025 • 4 min read</div>
+          <h2 class="blog-title">A Parent's Guide to Managing Seasonal Flus</h2>
+          <p class="blog-excerpt">Winter is coming, and so is the flu season. Dr. Anjali Mehta shares practical tips on boosting your child's immunity and when to visit the doctor.</p>
+          <a href="#" class="blog-link">Read Article →</a>
+        </div>
+      </article>
+
+      <!-- Post 3 -->
+      <article class="blog-card reveal stagger-2">
+        <div class="blog-img bg-3">
+          <span class="blog-category">Wellness</span>
+        </div>
+        <div class="blog-content">
+          <div class="blog-meta">📅 Sep 29, 2025 • 6 min read</div>
+          <h2 class="blog-title">The Importance of Annual Preventive Health Checkups</h2>
+          <p class="blog-excerpt">Prevention is better than cure. Discover why routine screening is vital for catching diseases early and ensuring a long, healthy life.</p>
+          <a href="#" class="blog-link">Read Article →</a>
+        </div>
+      </article>
+
+      <!-- Post 4 -->
+      <article class="blog-card reveal">
+        <div class="blog-img bg-4">
+          <span class="blog-category">Orthopedics</span>
+        </div>
+        <div class="blog-content">
+          <div class="blog-meta">📅 Sep 15, 2025 • 7 min read</div>
+          <h2 class="blog-title">Understanding Joint Pain: Arthritis vs Normal Wear & Tear</h2>
+          <p class="blog-excerpt">Is your knee pain just a sign of aging, or something more serious? Our orthopedic specialists break down the differences and treatment options.</p>
+          <a href="#" class="blog-link">Read Article →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>

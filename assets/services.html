@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore the comprehensive medical departments and services offered at MediCare Plus Hospital." />
+  <title>Departments & Services | MediCare Plus</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    .page-header {
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+      color: white; padding: 100px 24px 60px; text-align: center;
+    }
+    .page-header h1 { font-family: var(--font-display); font-size: 48px; margin-bottom: 16px; }
+    .page-header p { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+    
+    .dept-section { padding: 80px 0; border-bottom: 1px solid var(--gray-200); }
+    .dept-section:nth-child(even) { background: var(--off-white); }
+    
+    .dept-container {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .dept-container.reverse { direction: rtl; }
+    .dept-container.reverse > * { direction: ltr; }
+
+    .dept-icon {
+      width: 80px; height: 80px; border-radius: var(--radius-md);
+      background: var(--teal-pale); display: flex; align-items: center; justify-content: center;
+      font-size: 40px; margin-bottom: 24px;
+    }
+    .dept-content h2 { font-family: var(--font-display); font-size: 36px; color: var(--navy); margin-bottom: 16px; }
+    .dept-content p { color: var(--text-muted); font-size: 16px; line-height: 1.7; margin-bottom: 24px; }
+    
+    .dept-features { list-style: none; margin-bottom: 32px; }
+    .dept-features li { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; color: var(--navy); font-weight: 500; }
+    .dept-features li::before { content: '✓'; color: var(--teal); font-weight: 700; }
+    
+    .dept-visual {
+      background: linear-gradient(135deg, var(--teal-pale), #e8f4fd);
+      border-radius: var(--radius-lg); height: 400px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .dept-visual-icon { font-size: 120px; opacity: 0.2; position: absolute; right: -20px; bottom: -20px; transform: rotate(-15deg); }
+    
+    @media (max-width: 900px) {
+      .dept-container { grid-template-columns: 1fr; gap: 40px; }
+      .dept-container.reverse { direction: ltr; }
+      .dept-visual { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-mark">M+</div>
+        <div class="logo-text">
+          <span class="logo-name">MediCare Plus</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="doctors.html">Doctors</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="appointment.html">Appointment</a></li>
+        <li><a href="blog.html">Health Blog</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <a href="appointment.html" class="nav-cta">Book Appointment</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="page-header">
+    <h1>Centers of Excellence</h1>
+    <p>We provide comprehensive medical care across multiple specialties, combining advanced technology with compassionate care.</p>
+  </header>
+
+  <!-- Cardiology -->
+  <section class="dept-section" id="cardiology">
+    <div class="container dept-container">
+      <div class="dept-content reveal">
+        <div class="dept-icon">❤️</div>
+        <h2>Cardiology</h2>
+        <p>Our Heart Institute offers state-of-the-art diagnostic and therapeutic services for patients with cardiovascular disease. We are equipped with a modern Cath Lab and dedicated Cardiac ICU.</p>
+        <ul class="dept-features">
+          <li>24/7 Primary Angioplasty for Heart Attacks</li>
+          <li>Echocardiography & TMT</li>
+          <li>Pacemaker Implantation</li>
+          <li>Preventive Heart Health Packages</li>
+        </ul>
+        <a href="appointment.html?dept=cardiology" class="btn-primary">Consult a Cardiologist</a>
+      </div>
+      <div class="dept-visual reveal">
+        <div class="dept-visual-icon">❤️</div>
+        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); z-index: 1;">
+          <h4 style="color: var(--navy); margin-bottom: 8px;">Cath Lab Status</h4>
+          <span style="display: inline-block; padding: 4px 12px; background: #e6f7eb; color: #16a34a; border-radius: 20px; font-size: 13px; font-weight: 600;">Operational 24/7</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Neurology -->
+  <section class="dept-section" id="neurology">
+    <div class="container dept-container reverse">
+      <div class="dept-content reveal">
+        <div class="dept-icon">🧠</div>
+        <h2>Neurology & Neurosurgery</h2>
+        <p>Comprehensive care for brain, spine, and nerve disorders. Our specialized stroke unit ensures rapid treatment during the critical "golden hour".</p>
+        <ul class="dept-features">
+          <li>Dedicated Stroke Unit</li>
+          <li>Advanced Neuro-imaging (3T MRI)</li>
+          <li>Epilepsy Clinic</li>
+          <li>Minimally Invasive Spine Surgery</li>
+        </ul>
+        <a href="appointment.html?dept=neurology" class="btn-primary">Consult a Neurologist</a>
+      </div>
+      <div class="dept-visual reveal">
+        <div class="dept-visual-icon">🧠</div>
+        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); z-index: 1;">
+          <h4 style="color: var(--navy); margin-bottom: 8px;">Stroke Helpline</h4>
+          <strong style="color: var(--accent); font-size: 20px;">1800-000-911</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Orthopedics -->
+  <section class="dept-section" id="orthopedics">
+    <div class="container dept-container">
+      <div class="dept-content reveal">
+        <div class="dept-icon">🦴</div>
+        <h2>Orthopedics & Joint Replacement</h2>
+        <p>From sports injuries to complex joint replacements, our orthopedic specialists use the latest minimally invasive techniques to get you moving pain-free.</p>
+        <ul class="dept-features">
+          <li>Robotic Knee Replacement</li>
+          <li>Arthroscopy & Sports Medicine</li>
+          <li>Trauma Care (24/7)</li>
+          <li>Physiotherapy & Rehabilitation</li>
+        </ul>
+        <a href="appointment.html?dept=orthopedics" class="btn-primary">Consult an Orthopedist</a>
+      </div>
+      <div class="dept-visual reveal">
+        <div class="dept-visual-icon">🦴</div>
+      </div>
+    </div>
+  </section>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>
