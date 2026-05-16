@@ -53,6 +53,11 @@
     .bg-3 { background: linear-gradient(135deg, #84fab0, #8fd3f4); }
     .bg-4 { background: linear-gradient(135deg, #fccb90, #d57eeb); }
 
+    @media (max-width: 600px) {
+      .page-header { padding: 80px 20px 40px; }
+      .page-header h1 { font-size: 32px; }
+      .blog-grid { grid-template-columns: 1fr; padding: 50px 0; }
+    }
   </style>
 </head>
 <body>
@@ -74,6 +79,9 @@
         <li><a href="blog.html" class="active">Health Blog</a></li>
       </ul>
       <a href="appointment.html" class="nav-cta">Book Appointment</a>
+      <button class="nav-hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 

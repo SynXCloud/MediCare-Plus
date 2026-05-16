@@ -51,6 +51,12 @@
       .dept-container.reverse { direction: ltr; }
       .dept-visual { height: 300px; }
     }
+    @media (max-width: 600px) {
+      .page-header { padding: 80px 20px 40px; }
+      .page-header h1 { font-size: 32px; }
+      .dept-content h2 { font-size: 28px; }
+      .dept-section { padding: 50px 0; }
+    }
   </style>
 </head>
 <body>
@@ -73,6 +79,9 @@
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
       <a href="appointment.html" class="nav-cta">Book Appointment</a>
+      <button class="nav-hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
